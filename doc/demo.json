@@ -1,5 +1,4 @@
 {
-    "prefix_name": "demo", 
-    "org_file": "demo.org", 
-    "outputs": "ap_disp_light_sleep_req,ap_light_sleep_req"
-}
+    "prefix_name":"demo",
+    "org_file":"doc/demo.org",
+    "outputs":"ap_disp_light_sleep_req,ap_light_sleep_req"}

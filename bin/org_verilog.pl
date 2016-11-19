@@ -1,4 +1,5 @@
 #!/usr/bin/perl -w
+use local::lib;
 use Carp;
 use JSON;
 use Template;
@@ -47,8 +48,6 @@ my $outputs = $perl_scalar->{outputs};
 
 my %care_outputs_h;
 
-chdir "$out_dir";
-
 if ((!defined $org_fn) or (! -e $org_fn)) {
   print "[DEBUG] org file must be given in $json_fn\n";
   exit;
@@ -66,11 +65,13 @@ if (!defined $prefix_name) {
 
 my $org_star = '*';
 my $fh;
-open($fh, "$org_fn");
+open($fh, "$org_fn") or croak "Can not open file $org_fn: $!";
 my @lines = <$fh>;
 @lines = grep {/^(\Q$org_star\E)+\s/} @lines;
 chomp(@lines);
 close($fh);
+
+chdir "$out_dir";
 
 my $lines_info_ref; #store hash ref for every lines
 my $cnt = 0;
@@ -106,7 +107,7 @@ foreach my $item (@{$lines_info_ref}) {
     my $name = get_title($lines[$cnt]);
     my $level = get_level($lines[$cnt]);
     $lines_info_ref->[$cnt]->{name} = $name;
-    $lines_info_ref->{$cnt}->{level} = $level;
+    $lines_info_ref->[$cnt]->{level} = $level;
     if (grep {/^\Q$name\E$/} @arrs) {
       print "[ERROR] Duplicated assign, please fix: $name\n";
     }
@@ -219,6 +220,7 @@ sub read_json {
   open(my $fh, '<', "$file") or croak "Cano not open file $file: $!";
   $json_text = <$fh>;
   # delete comments
+  my @lines = split(/\n/, $json_text);
   my @json_lines = grep {!/^\s*#.*$/} @lines;
   $json_text = join("\n", @json_lines);
   $perl_text = decode_json($json_text);

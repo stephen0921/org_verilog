@@ -12,3 +12,6 @@
 *** | c
 *** | d
 ** & b)
+* ap_disp_light_sleep_req
+** aa
+** & bb
