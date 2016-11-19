@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-use local::lib;
+#use local::lib;
 use Carp;
 use JSON;
 use Template;
