@@ -1,0 +1,14 @@
+#+STARTUP: indent
+* ap_deep_sleep_req
+** peri_stop
+*** apb_peri_sleep
+*** | ap_apb_sleep
+* apb_peri_sleep
+** ca7_top_stop
+** & ca7_en
+* ap_light_sleep_req
+** ( a
+*** b
+*** | c
+*** | d
+** & b)

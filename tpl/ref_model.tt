@@ -1,0 +1,25 @@
+module [% prefix_name %]_ref_model (
+[%- FOREACH item IN inputs.sort %]
+  input [% item %],
+[%- END %]
+[%- cnt =0 -%]
+[%- total_cnt = outputs.size %]
+[%- FOREACH item IN outputs.sort %]
+  [%- cnt = cnt + 1 %]
+  [%- IF (cnt == total_cnt) %]
+  output wire [% item %]
+  [%- ELSE %]
+  output wire [% item %],
+  [%- END%]
+[%- END %]
+);
+[%- FOREACH item IN wires.sort %]
+  wire [% item %];
+[%- END %]
+
+[%- FOREACH item IN lines_info_ref %]
+  [%- IF (item.leafs.size == 0) %]
+  [%- ELSE %]
+  assign [% item.name %] = [% item.contents.join(' ') %];
+  [%- END %]
+[%- END %]
