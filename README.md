@@ -5,6 +5,6 @@ usage:
   perl bin/org_verilog.pl -i doc/demo.json
  
 
-![](https://github.com/stephen0921/org_verilog/edit/master/image/org.png =100x100)
+![org](https://github.com/stephen0921/org_verilog/blob/master/image/org.PNG)
 
-![](https://github.com/stephen0921/org_verilog/edit/master/image/verilog.PNG =100x100)
+![verilog](https://github.com/stephen0921/org_verilog/blob/master/image/verilog.PNG)
