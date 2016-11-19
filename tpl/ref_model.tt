@@ -23,3 +23,4 @@ module [% prefix_name %]_ref_model (
   assign [% item.name %] = [% item.contents.join(' ') %];
   [%- END %]
 [%- END %]
+endmodule
